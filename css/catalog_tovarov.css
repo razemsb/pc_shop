@@ -1,0 +1,122 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+header nav {
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left_buttons .btn4 {
+    background-color: #495057;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.left_buttons .btn4:hover {
+    background-color: #6c757d;
+}
+
+.roum {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.roum:hover {
+    background-color: #0056b3;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+.styled-select {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    width: 40%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    margin: 20px auto;
+    list-style-type: none;
+}
+
+li {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.add-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.add-button:hover {
+    background-color: #218838;
+}
+
+p, strong {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+strong {
+    font-weight: bold;
+    color: #333;
+}
