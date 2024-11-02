@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
     if ($pass !== $repeatpass) {
-        echo "<script>alert('Пароли не совпадают'); window.location.href = 'index.php';</script>";
+        echo "<script>alert('Пароли не совпадают'); window.location.href = 'index.html';</script>";
         exit();
     }
 
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
 
     if ($count > 0) {
-        echo "<script>alert('Этот логин уже занят. Пожалуйста, выберите другой.'); window.location.href = 'index.php';</script>";
+        echo "<script>alert('Этот логин уже занят. Пожалуйста, выберите другой.'); window.location.href = 'index.html';</script>";
         exit();
     }
 
@@ -40,7 +40,7 @@ $is_admin = "0";
         echo "<script>alert('Успешная регистрация'); window.location.href = 'main.php';</script>";
         $_SESSION['user_login'] = $name;
     } else {
-        echo "<script>alert('Ошибка при регистрации: " . $conn->errno . "'); window.location.href = 'index.php';</script>";
+        echo "<script>alert('Ошибка при регистрации: " . $conn->errno . "'); window.location.href = 'index.html';</script>";
     }
 
     $stmt->close();
