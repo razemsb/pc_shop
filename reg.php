@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
-
-    $stmt = $conn->prepare("INSERT INTO users (Login, Password, Email) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $hashed_pass, $email);
+$is_admin = "0";
+    $stmt = $conn->prepare("INSERT INTO users (Login, Password, Email, is_admin) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("sssi", $name, $hashed_pass, $email, $is_admin);
 
     if ($stmt->execute()) {
         echo "<script>alert('Успешная регистрация'); window.location.href = 'main.php';</script>";
