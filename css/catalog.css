@@ -73,7 +73,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    height: 530px; 
+    height: 540px; 
     transition: transform 0.2s;
 }
 
@@ -148,4 +148,7 @@ body {
     background-color: #333;
     color: #fff;
     margin-top: 20px;
+}
+.zagolovok {
+    text-align: center;
 }
