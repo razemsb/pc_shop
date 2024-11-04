@@ -9,14 +9,14 @@ if (isset($_SESSION['user_login'])) {
     if(isset($_SESSION['user_Login'])) {
 
     echo "<script>alert('Вы вышли из аккаунта.')</script>";
-    header("Location: page.php");
+    header("Location: main.php");
     exit();
     }else {
-    header("Location: page.php");   
+    header("Location: main.php");   
     exit();
     }
 } else {
-    header("Location: page.php");
+    header("Location: main.php");
     exit();
 }
 ?>

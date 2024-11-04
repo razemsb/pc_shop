@@ -3,12 +3,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-require 'db.php'; // Подключение к базе данных
+require 'db.php';
 
 $cartPc = isset($_SESSION['cart_pc']) ? $_SESSION['cart_pc'] : [];
 $cartComponents = isset($_SESSION['cart_components']) ? $_SESSION['cart_components'] : [];
 
-// Получение данных о товарах из базы данных
 $products = [];
 $query = "SELECT ID, Name, Img, Price FROM catalog";
 $result = mysqli_query($conn, $query);
@@ -21,8 +20,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     ];
 }
 
-// Получение данных о готовых ПК
-$queryPc = "SELECT ID, Name, Img, Price FROM pc"; // Предполагается, что ПК находятся в таблице pc
+$queryPc = "SELECT ID, Name, Img, Price FROM pc";
 $resultPc = mysqli_query($conn, $queryPc);
 
 while ($rowPc = mysqli_fetch_assoc($resultPc)) {
@@ -39,12 +37,11 @@ $totalComponents = 0;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     $productId = $_POST['product_id'];
     
-    // Удаление товара из корзины ПК
     if (isset($cartPc[$productId])) {
         unset($cartPc[$productId]);
         $_SESSION['cart_pc'] = $cartPc;
     }
-    // Удаление товара из корзины комплектующих
+
     if (isset($cartComponents[$productId])) {
         unset($cartComponents[$productId]);
         $_SESSION['cart_components'] = $cartComponents;
@@ -111,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
                 <?php foreach ($cartComponents as $productId => $item): ?>
                     <?php $totalComponents += $products[$productId]['Price'] * $item['quantity']; ?>
                     <li class="cart-item">
-                        <img src="<?= htmlspecialchars($products[$productId]['Img']) ?>" alt="<?= htmlspecialchars($products[$productId]['Name']) ?>" class="product-image">
+                        <img src="<?= htmlspecialchars($products[$productId]['Img']) ?>" alt="<?= htmlspecialchars($products[$productId]['Name']) ?>" class="product-image-product">
                         <div class="product-details">
                             <p>Товар: <strong><?= htmlspecialchars($products[$productId]['Name']) ?></strong></p>
                             <p>Количество: <?= htmlspecialchars($item['quantity']) ?></p>
@@ -134,11 +131,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
         <p>Общая сумма: <span class="total-amount"><?= htmlspecialchars($totalPc + $totalComponents) ?>₽</span></p>
     </div>
     
-    <button class="order-button" onclick="alert('Функция заказа временно не работает')">Заказать</button>
+    <button class="order-button" onclick="openModal()">Заказать</button>
 </div>
+<div class="modal-overlay" id="modal-overlay"></div>
+<div class="modal" id="order-modal">
+    <h2>Оформление заказа</h2>
+    <form action="" method="POST">
+        <label for="name">ФИО:</label>
+        <input type="text" id="name" name="name" required>
 
+        <label for="address">Адрес:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="select">Выбор выдачи:</label>
+        <select name="select" id="select" class="styled-select" required>
+        <option value="">-- Выберите категорию --</option>
+        <option value="">Самовывоз</option>
+        <option value="">Доставкой</option>
+        </select><br>
+        <button type="submit" class="buy-button">Подтвердить заказ</button>
+        <button type="button" onclick="closeModal()" class="remove-button">Отмена</button>
+    </form>
+</div>
 <footer>
     <p>&copy; 2024 enigma-hub. Все права защищены.</p>
 </footer>
+<script src="script/modal.js"></script>
 </body>
 </html>

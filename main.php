@@ -39,7 +39,7 @@ $is_admin = $_SESSION['is_admin'] ?? false;
                     <a href="admin.php" class="btn admin-btn">Админ</a>
                 <?php endif; ?>
             <?php else: ?>
-                <a href="#" class="btn register-btn">Регистрация</a>
+                <a href="index.html" class="btn register-btn">Регистрация/Авторизация</a>
             <?php endif; ?>
             <button class="btn logout-btn" onclick="window.location.href='buylist.php';">
                 Корзина <?= $totalItems > 0 ? "($totalItems)" : "" ?>

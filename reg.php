@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
-$is_admin = "0";
+    $is_admin = "0";
     $stmt = $conn->prepare("INSERT INTO users (Login, Password, Email, is_admin) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("sssi", $name, $hashed_pass, $email, $is_admin);
 

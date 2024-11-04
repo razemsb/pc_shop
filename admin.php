@@ -78,7 +78,7 @@ if ($table) {
                         <form action="" method="POST">
                             <td><?= htmlspecialchars($product['ID']) ?></td>
                             <td><input type="text" name="product_name" value="<?= htmlspecialchars($product['Name']) ?>" required></td>
-                            <td><input type="number" name="product_price" value="<?= htmlspecialchars($product['Price']) ?>" step="1000" required></td>
+                            <td><input type="number" name="product_price" value="<?= htmlspecialchars($product['Price']) ?>" step="250" required></td>
                             <td><input type="text" name="product_img" value="<?= htmlspecialchars($product['Img']) ?>" required></td>
                             <td>
                                 <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['ID']) ?>">

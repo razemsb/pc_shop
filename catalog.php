@@ -3,7 +3,6 @@ require_once('db.php');
 session_start();
 $totalItems = 0;
 
-// Calculate total items in cart
 if (isset($_SESSION['cart_pc'])) {
     foreach ($_SESSION['cart_pc'] as $item) {
         $totalItems += $item['quantity'];
@@ -44,7 +43,7 @@ $result = $conn->query($sql);
         </button>
     </nav>
 </header>
-<h1>Каталог готовых ПК</h1>
+<h1 class="zagolovok">Каталог готовых ПК</h1>
 <main class="main-content">
     <div class="product-grid">
         <?php

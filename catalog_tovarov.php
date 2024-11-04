@@ -76,16 +76,16 @@ if ($selectedCategory) {
     if ($result->num_rows > 0): ?>
         <ul>
             <?php while ($product = $result->fetch_assoc()): ?>
-                <li>
-                    <img src="<?= htmlspecialchars($product['Img']) ?>" alt="<?= htmlspecialchars($product['Name']) ?>" class="product-image">
-                    <strong><?= htmlspecialchars($product['Name']) ?></strong><br>
-                    <p style="padding:20px;">Цена: <?= htmlspecialchars($product['Price']) ?>₽
-                    <form action="add_to_cart.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['ID']) ?>">
-                        <input type="hidden" name="category" value="<?= htmlspecialchars($selectedCategory) ?>">
-                        <button type="submit" class="add-button">Добавить в корзину</button>
-                    </form>
-                </li>
+            <li>
+              <img src="<?= htmlspecialchars($product['Img']) ?>" alt="<?= htmlspecialchars($product['Name']) ?>" class="product-image">
+              <strong><?= htmlspecialchars($product['Name']) ?></strong><br>
+              <p style="padding:20px;">Цена: <?= htmlspecialchars($product['Price']) ?>₽</p>
+              <form action="add_to_cart.php" method="POST" style="display:inline;">
+                  <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['ID']) ?>">
+                  <input type="hidden" name="category" value="<?= htmlspecialchars($selectedCategory) ?>">
+                  <button type="submit" class="add-button">Добавить в корзину</button>
+              </form>
+            </li>
             <?php endwhile; ?>
         </ul>
     <?php else: ?>
