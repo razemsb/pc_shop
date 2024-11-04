@@ -11,10 +11,8 @@ $components = [];
 $pcs = [];
 $users = [];
 
-// Handle updating components and PCs
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST['type'])) {
     if ($_POST['type'] === 'component') {
-        // Update component
         $id = intval($_POST['id']);
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $price = floatval($_POST['price']);
@@ -24,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST
         $updateQuery = "UPDATE catalog SET Name='$name', Price='$price', Img='$img', Category='$category' WHERE ID=$id";
         mysqli_query($conn, $updateQuery);
     } elseif ($_POST['type'] === 'pc') {
-        // Update PC
         $id = intval($_POST['id']);
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $diss1 = mysqli_real_escape_string($conn, $_POST['diss1']);
@@ -37,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST
     }
 }
 
-// Handle deletion of components and PCs
 if (isset($_POST['delete_id']) && isset($_POST['delete_type'])) {
     if ($_POST['delete_type'] === 'component') {
         $delete_id = intval($_POST['delete_id']);
@@ -50,7 +46,6 @@ if (isset($_POST['delete_id']) && isset($_POST['delete_type'])) {
     }
 }
 
-// Fetch components, PCs, and users from the database
 $query = "SELECT ID, Name, Price, Img, Category FROM catalog";
 $result = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_assoc($result)) {
